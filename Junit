@@ -1,0 +1,25 @@
+package jpMorgan;
+
+import static org.junit.Assert.*;
+
+import java.util.Date;
+
+import org.junit.Test;
+
+public class Junit {
+	
+	Date date = new Date();
+	Trade trade = new Trade("TEA","Common",date,168,230.00);
+
+	
+	@Test
+	public void test() {
+		
+		int volume = trade.getVolume();
+		trade.setBSI(volume);
+		String BSI = trade.getBSI();
+		assertEquals("Sell",BSI);
+		
+	}
+
+}
