@@ -11,15 +11,17 @@ public class Main {
 	
 	public static void main (String [] args) {
 		
+		//The date of each trade is the current date
 		Date date = new Date();
 		
+		//set up an array of trade objects
 		Trade [] tradeArray;
 		tradeArray = new Trade[10];
 		
 		/*
 		 *Assumptions 
 		 * trade prices and volumes are taken from London Stock Exchange last 5 trades for companies
-		 * 
+		 * each stock will have multiple trades
 		 */
 		tradeArray[0] =new Trade("TEA","Common",date,168,230.00);
 		tradeArray[1] =new Trade("TEA","Common",date,1250,158.50);
@@ -54,7 +56,9 @@ public class Main {
 			int parValue = 0;
 			double tickerPrice = 0.0;
 			
-			
+			/*the last dividend, parValue and ticker price will be different for each stock so the below switch statement
+			*will assign a different value depending on the symbol of the stock
+			*/
 			switch (symbol){
 			case "TEA":
 				lastDividend = 0;
@@ -91,6 +95,7 @@ public class Main {
 			
 			}
 			
+			// calculating the dividend yield depending on what the type of Stock is
 			double dividendYield = 0.0;
 			String stockType = tradeArray[i].getType();
 			
@@ -122,6 +127,9 @@ public class Main {
 				
 		
 		}
+		/* In order to calculate the Stock Price we need to add up all the trade prices and volumes for each stock and
+		* and then divide them by the quantity of each stock traded.
+		*/
 		for (int j=0; j<2 ;j++){
 			ArrayList<Double> transTotal = new ArrayList<Double>();
 			transTotal.add(tradeArray[j].getTransactionTotal());
